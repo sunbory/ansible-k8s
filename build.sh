@@ -5,15 +5,18 @@
 
 function main {
 
-	local repo_url=https://github.com/ownport/portable-ansible/archive/v0.3.0.tar.gz
-		
-	if ! curl -fsSL -o "portable-ansible-0.3.0.tar.gz" "${repo_url}"; then
-		fail "failed to download portable-ansible source from ${repo_url}"
-	fi
-	
-	tar zxvf portable-ansible-0.3.0.tar.gz > /dev/null && rm -rf portable-ansible.tar.bz2
-	
-	ln -s ansible ansible-playbook
+        version=${1:-"v0.3.0"}
+        local repo_url=https://github.com/ownport/portable-ansible/archive/${version}.tar.gz
+
+        if ! curl -fsSL -o "portable-ansible.tar.gz" "${repo_url}"; then
+                fail "failed to download portable-ansible source from ${repo_url}"
+        fi
+
+        tar zxvf portable-ansible.tar.gz > /dev/null
+
+        cp requirements portable-ansible-0.3.0/conf
+
+        cd portable-ansible-0.3.0 &&　make tarballs
 }
 
 main $@
