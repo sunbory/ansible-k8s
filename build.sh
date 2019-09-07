@@ -14,17 +14,13 @@ function main {
                 fail "failed to download portable-ansible source from ${repo_url}"
         fi
 
-        tar zxvf portable-ansible.tar.gz > /dev/null
-
-        cp requirements portable-ansible-0.3.0/conf 
+        tar zxvf portable-ansible.tar.gz > /dev/null && cp requirements portable-ansible-0.3.0/conf 
         
-        pwd; ls -al
-        
-        cd portable-ansible-0.3.0　
+        cd ${TOP_DIR}/portable-ansible-0.3.0　
         
         make tarballs
         
-        mkdir ../dist && mv builds/*.tar.bz2 ../dist
+        mkdir -p ${TOP_DIR}/dist && mv builds/*.tar.bz2 ${TOP_DIR}/dist
 }
 
 main $@
