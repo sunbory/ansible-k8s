@@ -1,10 +1,5 @@
-language: python
+language: generic
 sudo: required
-python:
-  - "2.7"
-  
-before_script:
-  - sudo apt-get install -y make
 
 script:
   bash build.sh
