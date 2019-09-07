@@ -17,6 +17,8 @@ function main {
         cp requirements portable-ansible-0.3.0/conf
 
         cd portable-ansible-0.3.0 &&　make tarballs
+        
+        mkdir ../dist && mv builds/*.tar.bz2 ../dist
 }
 
 main $@
