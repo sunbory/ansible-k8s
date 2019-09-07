@@ -18,6 +18,8 @@ function main {
 
         cp requirements portable-ansible-0.3.0/conf 
         
+        pwd; ls
+        
         cd portable-ansible-0.3.0　
         
         make tarballs
