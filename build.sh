@@ -16,7 +16,9 @@ function main {
 
         tar zxvf portable-ansible.tar.gz > /dev/null
 
-        cp requirements portable-ansible-0.3.0/conf && cd portable-ansible-0.3.0　
+        cp requirements portable-ansible-0.3.0/conf 
+        
+        cd portable-ansible-0.3.0　
         
         make tarballs
         
