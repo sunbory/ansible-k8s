@@ -18,7 +18,7 @@ function main {
 
         cp requirements portable-ansible-0.3.0/conf 
         
-        pwd; ls
+        pwd; ls -al
         
         cd portable-ansible-0.3.0　
         
