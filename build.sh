@@ -3,6 +3,8 @@
 # export http_proxy=http://10.140.123.158:3128
 # export https_proxy=http://10.140.123.158:3128
 
+TOP_DIR=$(cd $(dirname "$0") && pwd)
+
 function main {
 
         version=${1:-"v0.3.0"}
