@@ -18,7 +18,7 @@ function main {
         
         pwd ; ls -al
  
-        cd ${TOP_DIR}/portable-ansible-0.3.0　
+        cd ${TOP_DIR}/portable-ansible-0.3.0
         
         make tarballs
         
