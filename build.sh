@@ -14,9 +14,9 @@ function main {
                 fail "failed to download portable-ansible source from ${repo_url}"
         fi
 
-        tar zxvf portable-ansible.tar.gz > /dev/null && cp requirements portable-ansible-0.3.0/conf 
-        
-        pwd ; ls -al
+        tar zxvf portable-ansible.tar.gz > /dev/null && \
+            cp requirements portable-ansible-0.3.0/conf && \
+            sed -i 's/--no-deps//g' portable-ansible-0.3.0/Makefile
  
         cd ${TOP_DIR}/portable-ansible-0.3.0
         
