@@ -7,22 +7,23 @@ TOP_DIR=$(cd $(dirname "$0") && pwd)
 
 function main {
 
-        version=${1:-"v0.3.0"}
-        local repo_url=https://github.com/ownport/portable-ansible/archive/${version}.tar.gz
+    local version=${1:-"0.3.0"}
+    local repo_url=https://github.com/ownport/portable-ansible/archive/v${version}.tar.gz
 
-        if ! curl -fsSL -o "portable-ansible.tar.gz" "${repo_url}"; then
-                fail "failed to download portable-ansible source from ${repo_url}"
-        fi
+    if ! curl -fsSL -o "portable-ansible.tar.gz" "${repo_url}"; then
+        fail "failed to download portable-ansible source from ${repo_url}"
+    fi
 
-        tar zxvf portable-ansible.tar.gz > /dev/null && \
-            cp requirements portable-ansible-0.3.0/conf && \
-            sed -i 's/--no-deps//g' portable-ansible-0.3.0/Makefile
- 
-        cd ${TOP_DIR}/portable-ansible-0.3.0
-        
-        make tarballs
-        
-        mkdir -p ${TOP_DIR}/dist && mv builds/*.tar.bz2 ${TOP_DIR}/dist
+    tar zxvf portable-ansible.tar.gz > /dev/null \
+        && rm -rf portable-ansible.tar.gz \
+        && cp requirements portable-ansible-${version}/conf
+
+
+    cd ${TOP_DIR}/portable-ansible-${version} \
+        && sed -i 's/--no-deps//g' Makefile \
+        && make tarballs
+    
+    mkdir -p ${TOP_DIR}/dist && mv builds/*.tar.bz2 ${TOP_DIR}/dist
 }
 
 main $@
